@@ -1,0 +1,70 @@
+#include <iostream>
+
+using namespace std;
+
+void my_increment(int* i, int n = 1) {
+    *i += n;
+}
+
+void multiply(int* a, int* b, int* result) {
+    *result = (*a) * (*b);
+}
+
+void negate1(double* i) {
+    *i = -(*i);
+}
+
+void setValue(int* i, int newValue) {
+    *i = newValue;
+}
+
+void concatenateDigits(int* a, int* b, int* res) {
+    int digits = (*b == 0) ? 1 : 0, temp = *b;
+
+    while (temp > 0) {
+        temp /= 10;
+        digits++;
+    }
+
+    int multiplier = 1;
+    for (int i = 0; i < digits; i++) {
+        multiplier *= 10;
+    }
+
+    *res = (*a) * multiplier + (*b);
+}
+
+int main() {
+    int a, b, result = 0;
+    double num;
+
+    cout << "Enter num for my_increment: ";
+    cin >> a;
+    my_increment(&a);
+    cout << "After my_increment (to 1): " << a << endl;
+
+    cout << "Enter 2 nums to multiply: ";
+    cin >> a >> b;
+    result = 0;  // Ініціалізація перед використанням
+    multiply(&a, &b, &result);
+    cout << "Result multiply: " << result << endl;
+
+    cout << "Enter num for negate: ";
+    cin >> num;
+    negate1(&num);
+    cout << "After negate: " << num << endl;
+
+    cout << "Enter num and new value for setValue: ";
+    cin >> a >> b;
+    setValue(&a, b);
+    cout << "After setValue: " << a << endl;
+
+    cout << "Enter 2 nums for concatenateDigits: ";
+    cin >> a >> b;
+    result = 0;  // Ініціалізація перед використанням
+    concatenateDigits(&a, &b, &result);
+    cout << "Result of concatenateDigits: " << result << endl;
+
+    return 0;
+}
+
